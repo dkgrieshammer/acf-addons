@@ -540,6 +540,15 @@
 		<?php if ($field['display_type'] == 'checkboxes') : ?>
 			<ul>
 				<?php if ($show_all): ?>
+				
+				<?php 
+					// thanks to nemo - single value to array conversion
+					if( !is_array($field['value']) )
+					{
+						$field['value'] = array( $field['value'] );
+					}
+				?>
+				
 				<?php if (in_array("all", $field['value'])) {
 					$is_selected = 'checked';
 				} else {
@@ -552,12 +561,21 @@
 				<?php endif ?>
 
 				<?php
-                    if (!$show_none) {
-                        $display_none = ' style="display:none"';
-                    } else {
-                        $display_none = '';
-                    }
-                ?>
+		                    if (!$show_none) {
+		                        $display_none = ' style="display:none"';
+		                    } else {
+		                        $display_none = '';
+		                    }
+                		?>
+                		
+                		<?php 
+					// thanks to nemo - single value to array conversion
+					if( !is_array($field['value']) )
+					{
+						$field['value'] = array( $field['value'] );
+					}
+				?>
+                		
 				<?php if (in_array("none", $field['value'])) {
 					$is_selected = 'checked';
 				} else {
